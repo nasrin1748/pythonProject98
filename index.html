@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single-Link Electron App</title>
+    <style>
+        nav {
+            margin-bottom: 20px;
+        }
+        nav button {
+            margin-right: 10px;
+            padding: 7px 15px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            color: #333;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        nav button:hover {
+            background-color: #e0e0e0;
+        }
+        #login-form {
+            max-width: 300px;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        #login-form input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #login-form button {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #login-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <!-- Default Login Form -->
+        <div id="login-page">
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <h2>Login</h2>
+                <input type="text" id="username" placeholder="Username" required />
+                <input type="password" id="password" placeholder="Password" required />
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function to dynamically load the main content
+        function loadMainContent() {
+            document.getElementById('content').innerHTML = `
+                <nav>
+                    <button onclick="loadPage('home')">Home</button>
+                    <button onclick="loadPage('about')">About</button>
+                    <button onclick="loadPage('contact')">Contact</button>
+                </nav>
+                <div id="main-content">
+                    <h1>Welcome to the Single-Link App!</h1>
+                    <p>Click on the buttons to load content dynamically.</p>
+                </div>
+            `;
+        }
+
+        // Handle Login Submission
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent form submission
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Perform simple login validation (example only)
+            if (username === 'admin' && password === 'password') {
+                alert('Login successful!');
+                loadMainContent(); // Load the main content on successful login
+            } else {
+                alert('Invalid username or password. Try again.');
+            }
+        }
+
+        // Function to dynamically load content in the main area
+        function loadPage(page) {
+            const content = {
+                home: '<h1>Home Page</h1><p>This is the home page content.</p>',
+                about: '<h1>About Page</h1><p>This is the about page content.</p>',
+                contact: '<h1>Contact Page</h1><p>This is the contact page content.</p>',
+            };
+            document.getElementById('main-content').innerHTML = content[page] || '<h1>404 Not Found</h1>';
+        }
+    </script>
+</body>
+</html>
