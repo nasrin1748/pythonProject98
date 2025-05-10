@@ -95,28 +95,7 @@
         // Function to dynamically load content in the main area
         function loadPage(page) {
             const content = {
-                home: '''<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Yellow Darkness</title>
-
-    <!-- Recommended meta tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-    <!-- PyScript CSS -->
-    <link rel="stylesheet" href="https://pyscript.net/releases/2025.2.1/core.css">
-
-    <!-- This script tag bootstraps PyScript -->
-    <script type="module" src="https://pyscript.net/releases/2025.2.1/core.js"></script>
-</head>
-<body>
-    <script type="py">
-        from pyscript import display
-        display("hello")
-    </script>
-</body>
-</html>''',
+                home: '<h1>home Page</h1><p>This is the about home page.</p>',
                 about: '<h1>About Page</h1><p>This is the about page content.</p>',
                 contact: '<h1>Contact Page</h1><p>This is the contact page content.</p>',
             };
